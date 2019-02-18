@@ -20,8 +20,8 @@ RUN R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cloud.r-proje
 RUN mkdir /root/app
 COPY app /root/app
 
-COPY Rprofile.site /usr/lib/R/etc/
+#COPY Rprofile.site /usr/lib/R/etc/
 
 EXPOSE 3838
 
-CMD ["R", "-e", "shiny::runApp('/root/app')"]
+CMD ["R", "-e", "shiny::runApp('/root/app', host='0.0.0.0', port = 3838)"]
